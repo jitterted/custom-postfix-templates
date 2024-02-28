@@ -2,4 +2,12 @@
 
 # combines .new with .var
 .nv : new var
-    CLASS → $expr$ $var:suggestVariableName()$ = new $expr$();$END$
+	CLASS → $expr$ $var:suggestVariableName()$ = new $expr$();$END$
+
+# Wraps the given (scalar) value in a List via List.of()
+.lof : Wrap single value in List.of()
+	NON_VOID -> java.util.List.of($expr$)
+
+# Wraps the given collection in a List via List.copyOf()
+.lcopy : Wrap collection in List.copyOf()
+	java.util.Collection -> java.util.List.copyOf($expr$)
